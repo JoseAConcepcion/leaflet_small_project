@@ -15,5 +15,5 @@ En este proyecto, hemos desarrollado una aplicación web que te permite explorar
 - Datos geográficos y estadísticas de múltiples fuentes confiables.
 
 ## Equipo ✒️
-    José Antonio Concepción Alvarez [joseaconcepcion](https://github.com/JoseAConcepcion)
-    Hiván Cañizarez [hivancañizarez](https://github.com/hivancd)
+    **José Antonio Concepción Alvarez** - [joseaconcepcion](https://github.com/JoseAConcepcion)
+    **Hiván Cañizarez** - [hivancañizarez](https://github.com/hivancd)

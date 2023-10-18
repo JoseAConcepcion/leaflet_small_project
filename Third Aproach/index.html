@@ -116,14 +116,22 @@
 		onEachFeature
 	}).addTo(map);
 
+	geojson.eachLayer(function (layer) {
+    	layer.bindPopup(layer.feature.properties.name);});
+
 	function resetHighlight(e) {
 		geojson.resetStyle(e.target);
 		info.update();
 	}
 
 	function zoomToFeature(e) {
-		map.fitBounds(e.target.getBounds());
-	}
+    var layer = e.target;
+    map.fitBounds(layer.getBounds());
+    
+    // Crear y mostrar un popup
+    var popupContent = "Nombre del país: " + layer.feature.properties.name; // Personaliza el contenido del popup según tus datos
+    layer.bindPopup(popupContent).openPopup();
+}
 
 	function onEachFeature(feature, layer) {
 		layer.on({

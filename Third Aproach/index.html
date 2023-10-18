@@ -135,7 +135,7 @@
 		}).addTo(map);
 
 		geojson.eachLayer(function (layer) {
-			layer.bindPopup(layer.feature.properties.name);
+			layer.bindPopup('SALCHICHAS');//layer.feature.properties.name
 		});
 
 		function onMouseOver(e) {// INTERACTION WHEN MOUSE OVER COUNTRY
@@ -152,19 +152,18 @@
 				// layer.Popup('POPUP');
 				info.update(layer.feature.properties);
 			}
-
-			// function showCountrieDataFeature(e) {
-			// 	const layer = e.target;
-			// 	// const contents = props ? `<b>${props.name}</b><br />${props.count} female coaches</sup>` : 'Hover over a Countrie';
-			// 	 const popup = layer.popup(latlng,												//Popups options
-			// 	 	{ content: '<p>Hello world!<br />This is a nice popup.</p>' });//popup content
-			// }
-
-			// map.openPopup();
-
 			highlightFeature(e);
-			// showCountrieDataFeature(e);
 		}
+		// function showCountrieDataFeature(e) {
+		// 	const layer = e.target;
+		// 	// const contents = props ? `<b>${props.name}</b><br />${props.count} female coaches</sup>` : 'Hover over a Countrie';
+		// 	 const popup = layer.popup(latlng,												//Popups options
+		// 	 	{ content: '<p>Hello world!<br />This is a nice popup.</p>' });//popup content
+		// }
+		// map.openPopup();
+
+
+		// showCountrieDataFeature(e);
 
 		function onMouseOut(e) {
 
@@ -175,13 +174,13 @@
 			resetHighlight(e);
 		}
 
-		function onClick(e) {
 
-			function zoomToFeature(e) {
-				map.fitBounds(e.target.getBounds());
-			}
-			zoomToFeature;
+		function zoomToFeature(e) {
+			var layer = e.target;
+			map.fitBounds(e.target.getBounds());
+			layer.bindPopup('salchichas').openPopup();
 		}
+		zoomToFeature;
 
 
 
@@ -190,7 +189,7 @@
 			layer.on({
 				mouseover: onMouseOver,
 				mouseout: onMouseOut,
-				click: onClick
+				click: zoomToFeature
 			});
 		}
 
@@ -245,7 +244,7 @@
 		legend.addTo(map);
 		// Leyenda End
 
-		map.on('click', onMapClick);
+		map.on('click', zoomToFeature);
 
 
 	</script>

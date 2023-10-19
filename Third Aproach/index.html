@@ -134,10 +134,6 @@
 			onEachFeature
 		}).addTo(map);
 
-		geojson.eachLayer(function (layer) {
-			layer.bindPopup(layer.feature.properties.name);
-		});
-
 		function onMouseOver(e) {// INTERACTION WHEN MOUSE OVER COUNTRY
 			function highlightFeature(e) {
 				const layer = e.target;
@@ -149,21 +145,9 @@
 				});
 
 				layer.bringToFront();
-				// layer.Popup('POPUP');
 				info.update(layer.feature.properties);
 			}
-
-			// function showCountrieDataFeature(e) {
-			// 	const layer = e.target;
-			// 	// const contents = props ? `<b>${props.name}</b><br />${props.count} female coaches</sup>` : 'Hover over a Countrie';
-			// 	 const popup = layer.popup(latlng,												//Popups options
-			// 	 	{ content: '<p>Hello world!<br />This is a nice popup.</p>' });//popup content
-			// }
-
-			// map.openPopup();
-
 			highlightFeature(e);
-			// showCountrieDataFeature(e);
 		}
 
 		function onMouseOut(e) {
@@ -175,50 +159,22 @@
 			resetHighlight(e);
 		}
 
-		function onClick(e) {
-
-			function zoomToFeature(e) {
-				map.fitBounds(e.target.getBounds());
-			}
-			zoomToFeature;
+		function zoomToFeature(e) {
+			var layer = e.target;
+			map.fitBounds(e.target.getBounds());
+			layer.bindPopup(layer.feature.properties.name).openPopup();
 		}
+		zoomToFeature;
 
 
 
 		function onEachFeature(feature, layer) {
-			// layer.bindPopup('<p>Hello world!<br />This is a nice popup.</p>'),
 			layer.on({
 				mouseover: onMouseOver,
 				mouseout: onMouseOut,
-				click: onClick
+				click: zoomToFeature
 			});
 		}
-
-		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		//Working on creating popups on mouse over
-
-
-
-		// INFO THAT I WANNA SHOW ON MOUSE OVER
-		// const contents = props ? `<b>${props.name}</b><br />${props.count} female coaches</sup>` : 'Hover over a Countrie';
-
-		// Event->MoueseEvent->onmouseover
-
-		// map.eachLayer(function (layer) {//Iterates over the layers of the map, 
-		// 	layer.bindPopup('Hello');	//optionally specifying context of the iterator function.
-		// });
-
-		// var popup = L.popup(latlng,												//Popups options
-		// 	{ content: '<p>Hello world!<br />This is a nice popup.</p>' })//popup content
-		// 	.openOn(map);
-
-
 
 		// Map Atribution
 		map.attributionControl.addAttribution('copyrigth info; <a href="http://source.cu/">Source</a>');
@@ -245,7 +201,7 @@
 		legend.addTo(map);
 		// Leyenda End
 
-		map.on('click', onMapClick);
+		map.on('click', zoomToFeature);
 
 
 	</script>

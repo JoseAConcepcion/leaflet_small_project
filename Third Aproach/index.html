@@ -81,7 +81,7 @@
 
 	<script type="text/javascript">
 
-		const map = L.map('map').setView([0, 0], 1, 5);
+		const map = L.map('map').setView([0, 0], 1);
 
 		// control that shows state info on hover
 		const info = L.control();
@@ -93,8 +93,8 @@
 		};
 
 		info.update = function (props) {
-			// const contents = props ? `<b>${props.name}</b><br />${props.count} female coaches</sup>` : 'Hover over a Countrie';
-			this._div.innerHTML = `<h4>Countrie Important Info</h4>`;//${contents};
+			const contents = props ? `<b>${props.name}</b><br />${props.count} female coaches</sup>` : 'Hover over a Countrie';
+			this._div.innerHTML = `<h4>Countrie Important Info</h4>${contents}`;
 		};
 
 		info.addTo(map);
@@ -127,13 +127,6 @@
 			};
 		}
 
-
-		/* global statesData */
-		const geojson = L.geoJson(countriesData, {
-			style,
-			onEachFeature
-		}).addTo(map);
-
 		function onMouseOver(e) {// INTERACTION WHEN MOUSE OVER COUNTRY
 			function highlightFeature(e) {
 				const layer = e.target;
@@ -149,6 +142,12 @@
 			}
 			highlightFeature(e);
 		}
+
+		/* global statesData */
+		const geojson = L.geoJson(countriesData, {
+			style,
+			onEachFeature
+		}).addTo(map);
 
 		function onMouseOut(e) {
 

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mapamundi</title>
+    <link rel="stylesheet" href="./leaflet/leaflet.css" /><!--under is the hosted link to leaflet-->
+    <!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />-->
+
+    <style>
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="map"></div>
+
+</body>
+
+</html>
+
+
+<script src="./leaflet/leaflet.js"></script><!--under is the hosted link to leaflet-->
+<!--<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>-->
+
+<script>
+    // (copied from leaflet main webpage)
+
+    // map initialization 
+    var map = L.map('map',
+    {
+    }).setview[0,0];
+
+    // map layer
+    var map_layer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom:1,
+        center:[0,0],
+        scrollWheelZoom:false
+    });
+    map_layer.addTo(map)
+
+
+    // var marker = L.marker([51.5, -0.09]).addTo(map)
+    //     .bindPopup('A pretty CSS popup.<br> Easily customizable.')
+    //     .openPopup();
+
+    function onMapClick(e) {
+        alert("You clicked the map at " + e.latlng + e.zoom);
+    }
+
+    function onMouseOver(e){
+
+    }
+
+    map.on('click', onMapClick);
+
+
+</script>

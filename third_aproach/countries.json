@@ -293,7 +293,7 @@
         },
         {
             "type": "Feature",
-            "id": "AGO",
+            "id": "ang",
             "properties": {
                 "name": "Angola"
             },
@@ -4133,7 +4133,7 @@
         },
         {
             "type": "Feature",
-            "id": "AUS",
+            "id": "aus",
             "properties": {
                 "name": "Australia"
             },
@@ -5541,7 +5541,7 @@
         },
         {
             "type": "Feature",
-            "id": "BEL",
+            "id": "bel",
             "properties": {
                 "name": "Belgium"
             },
@@ -6057,7 +6057,7 @@
         },
         {
             "type": "Feature",
-            "id": "BGR",
+            "id": "bul",
             "properties": {
                 "name": "Bulgaria"
             },
@@ -6291,7 +6291,7 @@
         },
         {
             "type": "Feature",
-            "id": "BIH",
+            "id": "bih",
             "properties": {
                 "name": "Bosnia and Herzegovina"
             },
@@ -8663,7 +8663,7 @@
         },
         {
             "type": "Feature",
-            "id": "CAN",
+            "id": "can",
             "properties": {
                 "name": "Canada"
             },
@@ -12549,7 +12549,7 @@
         },
         {
             "type": "Feature",
-            "id": "CHN",
+            "id": "chn",
             "properties": {
                 "name": "China"
             },
@@ -13529,7 +13529,7 @@
         },
         {
             "type": "Feature",
-            "id": "CIV",
+            "id": "civ",
             "properties": {
                 "name": "Ivory Coast"
             },
@@ -13985,7 +13985,7 @@
         },
         {
             "type": "Feature",
-            "id": "COD",
+            "id": "cgo",
             "properties": {
                 "name": "Democratic Republic of the Congo"
             },
@@ -16194,7 +16194,7 @@
         },
         {
             "type": "Feature",
-            "id": "DOM",
+            "id": "dom",
             "properties": {
                 "name": "Dominican Republic"
             },
@@ -16721,7 +16721,7 @@
         },
         {
             "type": "Feature",
-            "id": "EGY",
+            "id": "egy",
             "properties": {
                 "name": "Egypt"
             },
@@ -17580,7 +17580,7 @@
         },
         {
             "type": "Feature",
-            "id": "FIN",
+            "id": "fin",
             "properties": {
                 "name": "Finland"
             },
@@ -17912,7 +17912,7 @@
         },
         {
             "type": "Feature",
-            "id": "FRA",
+            "id": "fra",
             "properties": {
                 "name": "France",
                 "count": 1
@@ -18535,7 +18535,7 @@
         },
         {
             "type": "Feature",
-            "id": "GEO",
+            "id": "geo",
             "properties": {
                 "name": "Georgia"
             },
@@ -19263,7 +19263,7 @@
         },
         {
             "type": "Feature",
-            "id": "GRC",
+            "id": "gre",
             "properties": {
                 "name": "Greece"
             },
@@ -22183,7 +22183,7 @@
         },
         {
             "type": "Feature",
-            "id": "IND",
+            "id": "ind",
             "properties": {
                 "name": "India"
             },
@@ -22807,7 +22807,7 @@
         },
         {
             "type": "Feature",
-            "id": "IRN",
+            "id": "iri",
             "properties": {
                 "name": "Iran"
             },
@@ -23255,7 +23255,7 @@
         },
         {
             "type": "Feature",
-            "id": "ISL",
+            "id": "isl",
             "properties": {
                 "name": "Iceland"
             },
@@ -23885,7 +23885,7 @@
         },
         {
             "type": "Feature",
-            "id": "JOR",
+            "id": "jor",
             "properties": {
                 "name": "Jordan"
             },
@@ -23975,7 +23975,7 @@
         },
         {
             "type": "Feature",
-            "id": "JPN",
+            "id": "jpn",
             "properties": {
                 "name": "Japan"
             },
@@ -24259,7 +24259,7 @@
         },
         {
             "type": "Feature",
-            "id": "KAZ",
+            "id": "kaz",
             "properties": {
                 "name": "Kazakhstan"
             },
@@ -25119,7 +25119,7 @@
         },
         {
             "type": "Feature",
-            "id": "KOR",
+            "id": "kor",
             "properties": {
                 "name": "South Korea"
             },
@@ -25519,7 +25519,7 @@
         },
         {
             "type": "Feature",
-            "id": "LBN",
+            "id": "lib",
             "properties": {
                 "name": "Lebanon"
             },
@@ -26053,7 +26053,7 @@
         },
         {
             "type": "Feature",
-            "id": "LTU",
+            "id": "ltu",
             "properties": {
                 "name": "Lithuania"
             },
@@ -26185,7 +26185,7 @@
         },
         {
             "type": "Feature",
-            "id": "LVA",
+            "id": "lat",
             "properties": {
                 "name": "Latvia"
             },
@@ -26679,7 +26679,7 @@
         },
         {
             "type": "Feature",
-            "id": "MDG",
+            "id": "mad",
             "properties": {
                 "name": "Madagascar"
             },
@@ -26889,7 +26889,7 @@
         },
         {
             "type": "Feature",
-            "id": "MEX",
+            "id": "mex",
             "properties": {
                 "name": "Mexico",
                 "count": 200
@@ -28362,7 +28362,7 @@
         },
         {
             "type": "Feature",
-            "id": "MNE",
+            "id": "mne",
             "properties": {
                 "name": "Montenegro"
             },
@@ -29380,7 +29380,7 @@
         },
         {
             "type": "Feature",
-            "id": "MYS",
+            "id": "brn",
             "properties": {
                 "name": "Malaysia"
             },
@@ -33510,7 +33510,7 @@
         },
         {
             "type": "Feature",
-            "id": "PRI",
+            "id": "pur",
             "properties": {
                 "name": "Puerto Rico"
             },
@@ -34278,7 +34278,7 @@
         },
         {
             "type": "Feature",
-            "id": "RUS",
+            "id": "rus",
             "properties": {
                 "name": "Russia",
                 "count": 150
@@ -38991,7 +38991,7 @@
         },
         {
             "type": "Feature",
-            "id": "SVK",
+            "id": "svk",
             "properties": {
                 "name": "Slovakia"
             },
@@ -39137,7 +39137,7 @@
         },
         {
             "type": "Feature",
-            "id": "SVN",
+            "id": "slo",
             "properties": {
                 "name": "Slovenia"
             },
@@ -40055,7 +40055,7 @@
         },
         {
             "type": "Feature",
-            "id": "THA",
+            "id": "tha",
             "properties": {
                 "name": "Thailand"
             },
@@ -40975,7 +40975,7 @@
         },
         {
             "type": "Feature",
-            "id": "TUR",
+            "id": "tur",
             "properties": {
                 "name": "Turkey"
             },
@@ -41645,7 +41645,7 @@
         },
         {
             "type": "Feature",
-            "id": "UKR",
+            "id": "ukr",
             "properties": {
                 "name": "Ukraine"
             },
@@ -42149,7 +42149,7 @@
         },
         {
             "type": "Feature",
-            "id": "USA",
+            "id": "usa",
             "properties": {
                 "name": "United States of America",
                 "count": 50
@@ -43974,7 +43974,7 @@
         },
         {
             "type": "Feature",
-            "id": "UZB",
+            "id": "uzb",
             "properties": {
                 "name": "Uzbekistan"
             },

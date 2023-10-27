@@ -1,6 +1,16 @@
-let template = require('./countries.json');
+const {countriesData} = require('./countries');
+const countries = require('./countries.json');
+const database = require('../data/data.json');
 
-let database = require('../data/data.json');
+const found = [];
+Object.keys(database.countries).forEach(id => {
+    const find = countriesData.features.find(country => country.id === id);
+
+    if(find == undefined){
+        found.push(id);
+    }
+});
+console.log(found);
 
 // console.log(all_data.countries.ven);
 
@@ -37,12 +47,19 @@ function get_feautures(template,database){
                 if(male != null){properties.sports[sport].male = male;}
                 if(female!=null){properties.sports[sport].female = female;}
             });
+
+            
             countrie.properties = properties;
         }
         else {
-            countrie.properties.no_data = 'No data';
+            countrie.properties.country_name = countrie.properties.name;
         }
+        
     });
+    // Object.keys(database.countries).forEach(c_db => {
+
+        
+    // });
     return countries_t;
 }
 
@@ -54,7 +71,12 @@ function get_geojson(template,database) {
     return geojson;
 }
 
-let geojson = get_geojson(template,database);
+
+// const countries_info = get_geojson(template,database);
+
+
+
+
 
 
 

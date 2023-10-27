@@ -46,7 +46,7 @@
 		.info {
 			padding: 6px 8px;
 			font: 14px/16px Arial, Helvetica, sans-serif;
-			background: rgb(255, 255, 255);
+			/* background: rgb(0, 0, 0); */
 			background: rgba(255, 255, 255, 0.8);
 			box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 			border-radius: 5px;
@@ -78,14 +78,18 @@
 	<div id='map'></div>
 
 	<script type="text/javascript" src="countries.js"></script>
-
 	<!-- <script type="text/javascript" src="data.js"></script> -->
-
 	<script type="text/javascript">
 
-		const data = require('../data/data.json');
+		async function loadCountryData() {
+			const response = await fetch("../data/data.json");
+			const data = await response.json();
+			return data;
+		}
 
-		const map = L.map('map').setView([0, 0], 1, 5);
+		const data = loadCountryData();
+
+		const map = L.map('map').setView([15.93614, -23.96724 ], 1, 5);
 
 		// control that shows state info on hover
 		const info = L.control();
@@ -97,8 +101,7 @@
 		};
 
 		info.update = function (props) {
-			// const contents = props ? `<b>${props.name}</b><br />${props.count} female coaches</sup>` : 'Hover over a Countrie';
-			this._div.innerHTML = `<h4>Countrie Important Info</h4>`;//${contents};
+			this._div.innerHTML = `<h4>Countrie Important Info</h4>`;
 		};
 
 		info.addTo(map);
@@ -131,7 +134,6 @@
 			};
 		}
 
-
 		/* global statesData */
 		const geojson = L.geoJson(countriesData, {
 			style,
@@ -139,16 +141,17 @@
 		}).addTo(map);
 
 		geojson.eachLayer(function (layer) {
-			layer.bindPopup(layer.feature.properties.name);
+			layer.bindPopup(layer.feature.properties.country_name);
 		});
 
-		function onMouseOver(e) {// INTERACTION WHEN MOUSE OVER COUNTRY
+
+		function onMouseOver(e) {
 			function highlightFeature(e) {
 				const layer = e.target;
 				layer.setStyle({
 					weight: 5,
-					color: 'black',
-					dashArray: '',
+					color: "#666",
+					dashArray: "",
 					fillOpacity: 0.7
 				});
 
@@ -158,21 +161,26 @@
 			highlightFeature(e);
 		}
 
+
 		function onMouseOut(e) {
 
 			function resetHighlight(e) {
 				geojson.resetStyle(e.target);
 				info.update();
 			}
+
 			resetHighlight(e);
 		}
 
-		function onClick(e) {
+		async function onClick(e) {
 
-			function zoomToFeature(e) {
-				map.fitBounds(e.target.getBounds());
-			}
-			zoomToFeature;
+			map.fitBounds(e.target.getBounds());
+			var layer = e.target;
+			var country = layer.feature.id;
+			const data = await loadCountryData();
+			const countryName = data.countries[country].country_name;
+			var popupContent = "Nombre del país: " + countryName;
+			layer.bindPopup(popupContent).openPopup();
 		}
 
 
@@ -190,7 +198,7 @@
 		map.attributionControl.addAttribution('copyrigth info; <a href="http://source.cu/">Source</a>');
 
 		//Creacion e instanciacion de la Leyenda con el significado de los colores del mapa
-		const legend = L.control({ position: 'bottomleft' });
+		const legend = L.control({ position: 'bottomright' });
 		legend.onAdd = function (map) {
 
 			const div = L.DomUtil.create('div', 'info legend');

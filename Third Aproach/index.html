@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Choropleth Tutorial - Leaflet</title>
+    <button id="highlight-button">Resaltar Países</button>
 
     <link
       rel="shortcut icon"
@@ -87,14 +88,13 @@
     <script type="text/javascript">
       const map = L.map("map").setView([37.8, -96], 4);
 
-	  async function loadCountryData() {
-    const response = await fetch("data.json");
-    const data = await response.json();
-    return data;
-    }	
+      async function loadCountryData() {
+        const response = await fetch("data.json");
+        const data = await response.json();
+        return data;
+      }
 
-	  
-	//   const data = fetch('../data/data.json').then(response => response.json())
+      //   const data = fetch('../data/data.json').then(response => response.json())
 
       // control that shows state info on hover
       const info = L.control();
@@ -165,8 +165,6 @@
         info.update(layer.feature.properties);
       }
 
-   
-
       /* global statesData */
       const geojson = L.geoJson(countriesData, {
         style,
@@ -175,23 +173,22 @@
 
       geojson.eachLayer(function (layer) {
         layer.bindPopup(layer.feature.properties.name);
-	});
+      });
 
       function resetHighlight(e) {
         geojson.resetStyle(e.target);
         info.update();
       }
 
-    async function zoomToFeature(e) {
+      async function zoomToFeature(e) {
         var layer = e.target;
         map.fitBounds(layer.getBounds());
-		var country = layer.feature.id;
-		
-		const data = await loadCountryData();
-		const countryName = data.countries[country].country_name;
-		var popupContent = "Nombre del país: " + countryName;
-		layer.bindPopup(popupContent).openPopup();
-		
+        var country = layer.feature.id;
+
+        const data = await loadCountryData();
+        const countryName = data.countries[country].country_name;
+        var popupContent = "Nombre del país: " + countryName;
+        layer.bindPopup(popupContent).openPopup();
       }
 
       function onEachFeature(feature, layer) {
@@ -246,6 +243,66 @@
       const country = "ang";
       const sport = "basket";
       const countrySportInfo = getCountrySportInfo(country, sport);
+
+      // Crear un mapa Leaflet y agregarlo a un elemento HTML con id "map"
+    //   var map = L.map("map").setView([0, 0], 2); // Ajusta la vista y el nivel de zoom según tus necesidades
+
+      // Añade una capa de mapas base (por ejemplo, OpenStreetMap)
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
+        map
+      );
+
+      // Cargar tus datos de países desde un archivo GeoJSON
+      var countriesLayer = L.geoJSON(countriesData).addTo(map);
+
+      // Evento click para el botón
+      $("#highlight-button").click(function () {
+        // Define el continente que deseas resaltar (por ejemplo, 'África')
+        var targetContinent = "Africa";
+
+        // Recorre todas las capas y resalta los países del continente objetivo
+        countriesLayer.eachLayer(function (layer) {
+          var continent = layer.feature.properties.continent;
+
+          if (continent === targetContinent) {
+            // Resaltar el país
+            layer.setStyle({
+              fillColor: "yellow",
+              color: "black",
+              weight: 2,
+            });
+
+            // Mostrar el nombre del país en un popup
+            var countryName = layer.feature.properties.name;
+            layer.bindPopup(countryName);
+          } else {
+            // Restablecer el estilo y cerrar el popup
+            layer.setStyle({
+              fillColor: "transparent",
+              color: "transparent",
+              weight: 0,
+            });
+            layer.closePopup();
+          }
+        });
+      });
+
+      // Añade el botón al mapa
+      var customControl = L.Control.extend({
+        options: {
+          position: "topright",
+        },
+        onAdd: function (map) {
+          var container = L.DomUtil.create(
+            "div",
+            "leaflet-bar leaflet-control leaflet-control-custom"
+          );
+          container.innerHTML =
+            '<button id="highlight-button">Resaltar Países</button>';
+          return container;
+        },
+      });
+      map.addControl(new customControl());
     </script>
   </body>
 </html>

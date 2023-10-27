@@ -1,0 +1,15 @@
+paises que no aparecen:
+!Solved 1-Cabo Verde no esta en countries.js id=cpv
+!Solved 3-barein no aparece id=mas
+4-Inglaterra no esta en countries.js id=eng
+!Solved 5-Samoa no aparace en countries.js id=sam
+!Solved 6-Tonga no aparece en countries.js id=tga
+7-Gales no aparece en countries.js id=wal
+!Solved 9-HongKong no aparece id=hkg
+10-Escocia no aparece id=sco
+
+preguntar al yudi:
+2-Revisar con Yudi que no halla equivocacion con rep del cong
+y rep dem del congo id=cog
+8-Taipei se refiere a Taiwan? Creo que si
+y lo cambie preguntar al yudi id=tpe

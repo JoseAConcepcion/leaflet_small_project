@@ -5,8 +5,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Choropleth Tutorial - Leaflet</title>
-    <button id="highlight-button">Resaltar Países</button>
+    <title>Mapa 01</title>
+
+    <!-- <button id="highlight-button">Resaltar Países</button> -->
+
+    <link rel="stylesheet" href="style.css">
 
     <link
       rel="shortcut icon"
@@ -27,6 +30,7 @@
     ></script>
     <script src="http://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
     <script src="js/leaflet-providers.js"></script>
+
     <style>
       html,
       body {
@@ -41,18 +45,12 @@
         height: 100%;
         width: 100%;
       }
-      /* .leaflet-container {
-			height: 400px;
-			width: 600px;
-			max-width: 100%;
-			max-height: 100%;
-		} */
     </style>
 
     <style>
       #map {
-        width: 800px;
-        height: 500px;
+        width: 700px;
+        height: 400px;
       }
       .info {
         padding: 6px 8px;
@@ -81,6 +79,48 @@
     </style>
   </head>
   <body>
+
+    <div class="centered-content">
+      <div class="graph-text main-text">
+        <h1 class="oracion">
+          Mapa interactivo de los diferentes entrenadores por países
+        </h1> 
+      </div>
+
+      <div>
+        <div>
+          <span>Deportes:&nbsp;</span>
+          <select>
+            <option value="all">Todos</option>
+            <option value="beisbol" >   Beísbol</option>
+            <option value="volley">     Volleyball</option>
+            <option value="fut"     >   Futbol</option>
+            <option value="rug"     >   Rugby</option>
+            <option value="balonmano">  Balonmano</option>
+            <option value="softbal">    Softbal</option>
+            <option value="polo" >      Polo</option>
+            <option value="hockey">     Hockey</optio>
+              <option value="basket">     Basketbol</option>
+            </select>
+            
+            <span>Entrenadores:&nbsp;</span>
+            <select>
+              <option value="female">Mujeres</option>
+              <option value="male">Hombres</option>
+            </select>
+
+            <span>Desarrollo:&nbsp;</span> 
+              <select>
+                <option value="developed" >Desarrollado</option>
+                <option value="!developed">En desarrollo</option>
+              </select>
+            
+          </div>
+
+        
+      </div>
+
+
     <div id="map"></div>
 
     <script type="text/javascript" src="countries.js"></script>
@@ -94,9 +134,6 @@
         return data;
       }
 
-      //   const data = fetch('../data/data.json').then(response => response.json())
-
-      // control that shows state info on hover
       const info = L.control();
 
       info.onAdd = function (map) {
@@ -238,71 +275,6 @@
         }
         return null;
       }
-
-      // Ejemplo de uso:
-      const country = "ang";
-      const sport = "basket";
-      const countrySportInfo = getCountrySportInfo(country, sport);
-
-      // Crear un mapa Leaflet y agregarlo a un elemento HTML con id "map"
-    //   var map = L.map("map").setView([0, 0], 2); // Ajusta la vista y el nivel de zoom según tus necesidades
-
-      // Añade una capa de mapas base (por ejemplo, OpenStreetMap)
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
-        map
-      );
-
-      // Cargar tus datos de países desde un archivo GeoJSON
-      var countriesLayer = L.geoJSON(countriesData).addTo(map);
-
-      // Evento click para el botón
-      $("#highlight-button").click(function () {
-        // Define el continente que deseas resaltar (por ejemplo, 'África')
-        var targetContinent = "Africa";
-
-        // Recorre todas las capas y resalta los países del continente objetivo
-        countriesLayer.eachLayer(function (layer) {
-          var continent = layer.feature.properties.continent;
-
-          if (continent === targetContinent) {
-            // Resaltar el país
-            layer.setStyle({
-              fillColor: "yellow",
-              color: "black",
-              weight: 2,
-            });
-
-            // Mostrar el nombre del país en un popup
-            var countryName = layer.feature.properties.name;
-            layer.bindPopup(countryName);
-          } else {
-            // Restablecer el estilo y cerrar el popup
-            layer.setStyle({
-              fillColor: "transparent",
-              color: "transparent",
-              weight: 0,
-            });
-            layer.closePopup();
-          }
-        });
-      });
-
-      // Añade el botón al mapa
-      var customControl = L.Control.extend({
-        options: {
-          position: "topright",
-        },
-        onAdd: function (map) {
-          var container = L.DomUtil.create(
-            "div",
-            "leaflet-bar leaflet-control leaflet-control-custom"
-          );
-          container.innerHTML =
-            '<button id="highlight-button">Resaltar Países</button>';
-          return container;
-        },
-      });
-      map.addControl(new customControl());
     </script>
   </body>
 </html>

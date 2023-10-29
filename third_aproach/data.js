@@ -54,7 +54,7 @@ function get_geojson(template,database) {
     return geojson;
 }
 
-let geojson = get_geojson(template,database);
+
 
 
 

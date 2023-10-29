@@ -87,9 +87,33 @@
 			return data;
 		}
 
-		const data = loadCountryData();
+		const database = loadCountryData();
 
-		const map = L.map('map').setView([15.93614, -23.96724 ], 1, 5);
+		
+		//--------------------------------------------------------------------------------------
+		async function get_filtered_popup(id, sport, gender,data){
+			let info = await data.countries[id].country_name;
+
+			if (info != undefined){
+				let ans_obj;
+				let f =false;
+				await data.sports[sport][gender].countries.forEach(obj => {
+					if(obj.country_id == id){
+						ans_obj = obj;
+						f=true;
+					}
+				});
+				if(f){
+					let more =  ans_obj.manager_name + "\n" + 
+								ans_obj.manager_sex  + "\n" +
+								ans_obj.result;
+					return info + "\n" + more;
+				}
+			}
+			return "no participo";
+		}
+
+		const map = L.map('map').setView([0,0], 1, 5);
 
 		// control that shows state info on hover
 		const info = L.control();
@@ -130,7 +154,7 @@
 				color: 'white',
 				dashArray: '3',
 				fillOpacity: 0.7,
-				fillColor: getColor(feature.properties.count)
+				fillColor: '#FFEDA0'
 			};
 		}
 
@@ -174,12 +198,12 @@
 
 		async function onClick(e) {
 
-			map.fitBounds(e.target.getBounds());
+			// map.fitBounds(e.target.getBounds());
 			var layer = e.target;
 			var country = layer.feature.id;
 			const data = await loadCountryData();
 			const countryName = data.countries[country].country_name;
-			var popupContent = "Nombre del país: " + countryName;
+			var popupContent = await get_filtered_popup(country,"basket","female",data);
 			layer.bindPopup(popupContent).openPopup();
 		}
 

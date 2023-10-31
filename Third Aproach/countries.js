@@ -7770,7 +7770,7 @@ var countriesData = {
     },
     {
       type: "Feature",
-      id: "mdg",
+      id: "mad",
       properties: { name: "Madagascar" },
       geometry: {
         type: "Polygon",

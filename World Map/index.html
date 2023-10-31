@@ -151,9 +151,9 @@
 
       info.update = function (props) {
         const contents = props
-          ? `<b>${props.name}</b><br />${props.count} female coaches</sup>`
-          : "Hover over a countrie";
-        this._div.innerHTML = `<h4>Countrie Important Info</h4>${contents}`;
+          ? ` <b>${props.name}</b> <br/> ¿Qué ponemos aquí? </sup>`
+          : "Pasa el cursor sobre un país";
+        this._div.innerHTML = `<h4>Información relevante del país</h4>${contents}`;
       }
 
       info.addTo(map);
@@ -161,10 +161,10 @@
       const tiles = L.tileLayer("Thunderforest.Transport", {
         maxZoom: 20,
         attribution:
-          '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, contributors',
+          '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>',
       }).addTo(map);
 
-      let activeCountries = ["afg", "mad"];
+      let activeCountries = [];
 
       // get color depending on majority of data
       function getColor(id) {
@@ -257,7 +257,7 @@
       }
 
       map.attributionControl.addAttribution(
-        'copyrigth info; <a href="http://source.cu/">Source</a>'
+        '<a href="http://metodologia.cu/">Fuentes</a>'
       );
 
       function updateMap() {
@@ -289,6 +289,11 @@
       var tonga = L.marker([-20.54838, -175.40676]).bindPopup("Tonga").addTo(map);
       var barein = L.marker([26.16835, 50.52564]).bindPopup("Barein").addTo(map);
       var samoa = L.marker([-13.85302, -172.05893]).bindPopup("Somoa").addTo(map);
+
+      //hide for now
+      map.removeLayer(tonga);
+      map.removeLayer(barein);
+      map.removeLayer(samoa);
 
 
       // var cities = L.layerGroup([littleton]);

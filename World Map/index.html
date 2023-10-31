@@ -136,7 +136,7 @@
       const map = L.map("map").setView([20, -20], 1);
 
       async function loadCountryData() {
-        const response = await fetch("data.json");
+        const response = await fetch("../data/data.json");
         const data = await response.json();
         return data;
       }
@@ -240,7 +240,7 @@
       }
 
       async function resaltarContinente(continent) {
-        fetch('data.json') // Especifica la ubicación del archivo JSON
+        fetch('../data/data.json') // Especifica la ubicación del archivo JSON
         .then(response => response.json()) // Convierte la respuesta en JSON
         .then(data => {
           activeCountries = getPaisesEnContinente(data, continent);

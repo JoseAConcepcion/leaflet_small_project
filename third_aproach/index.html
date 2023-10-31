@@ -74,46 +74,116 @@
 </head>
 
 <body>
+	<div id="selectors" display="block"><span>Deportes:&nbsp;</span>
+		<select id="sport" onchange="change_colors()">
+			<option value="baseball"> Béisbol</option>
+			<option value="voly"> Volleyball</option>
+			<option value="futbol"> Fútbol</option>
+			<option value="rugby"> Rugby</option>
+			<option value="handball"> Balonmano</option>
+			<option value="softball"> Softball</option>
+			<option value="polo"> Polo</option>
+			<option value="hockey"> Hockey</optio>
+			<option value="basket"> Baloncesto</option>
+		</select>
 
-	<div id='map'></div>
+		<span>Género:&nbsp;</span>
+		<select id="team_sex" onchange="change_colors()">
+			<option value="female">Femenino</option>
+			<option value="male">Masculino</option>
+		</select>
+
+		<span>Entrenadores:&nbsp;</span>
+		<select id="trainer_sex" onchange="change_colors()">
+			<option value="all">Todos</option>
+			<option value="female">Mujeres</option>
+			<option value="male">Hombres</option>
+		</select>
+
+		<span>Desarrollo:&nbsp;</span>
+		<select id="development" onchange="change_colors()">
+			<option value="all">Todos</option>
+			<option value="developed">Desarrollado</option>
+			<option value="!developed">En desarrollo</option>
+		</select>
+
+		<br><br>
+	</div>
+
+	<div id='map' display="block"></div>
 
 	<script type="text/javascript" src="countries.js"></script>
 	<!-- <script type="text/javascript" src="data.js"></script> -->
 	<script type="text/javascript">
 
+		// carga los datos del data.json !!! fijarse que la direccion
+		// del json este correcta 
 		async function loadCountryData() {
 			const response = await fetch("../data/data.json");
 			const data = await response.json();
 			return data;
 		}
 
+		// carga la bse de datos
 		const database = loadCountryData();
 
-		
-		//--------------------------------------------------------------------------------------
-		async function get_filtered_popup(id, sport, gender,data){
-			let info = await data.countries[id].country_name;
+		// carga el valor de los filtros
+		let sport_f = document.getElementById("sport").value;
+		let team_sex_f = document.getElementById("team_sex").value;
+		let trainer_sex_f = document.getElementById("trainer_sex").value;
+		let development_f = document.getElementById("development").value;
 
-			if (info != undefined){
-				let ans_obj;
-				let f =false;
-				await data.sports[sport][gender].countries.forEach(obj => {
-					if(obj.country_id == id){
-						ans_obj = obj;
-						f=true;
-					}
-				});
-				if(f){
-					let more =  ans_obj.manager_name + "\n" + 
-								ans_obj.manager_sex  + "\n" +
-								ans_obj.result;
-					return info + "\n" + more;
-				}
+		// funcion para crear el popup a partir de los filtros
+		async function get_filtered_popup(id, sport, team_sex, trainer_sex) {
+			let obj = await passes_filter(id, sport, team_sex, trainer_sex);
+
+			if (obj != undefined) {
+				const name = database.countries[id].country_name;
+				const text =
+					name + "\n" +
+					obj.manager_name + "\n" +
+					obj.result;
+				return text;
 			}
 			return "no participo";
 		}
 
-		const map = L.map('map').setView([0,0], 1, 5);
+		// changes map colors according to filters NOT IMPLEMENTED
+		async function change_colors() {
+			const array = await get_filtered_list();
+			console.log(array);
+		}
+
+		// si el pais con (id) pasa los filtros (el resto de los argumentos)
+		// lo retorna. si no, devuelve undefined
+		function passes_filter(id, sport, team_sex, trainer_sex) {
+			const ans = database.sports[sport][team_sex].countries.find(team => {
+				team.country_id == id;
+				if (trainer_sex != "all") {
+					team.manager_sex == trainer_sex;
+				}
+				if (development != "all") {
+					team.development == database.countries[id].development;
+				}
+			});
+			return ans;
+		}
+
+		// Halla los filtros de los select y devuelve un array con los id
+		// de los paises que los cumplen
+		async function get_filtered_list() {
+			const array = [];
+			const countries_arr = countriesData.feautures;
+			await countrie_arr.forEach(country_obj => {
+				if (passes_filter(country_obj.id, sport_f, team_sex_f, trainer_sex_f, development_f) != undefined) {
+					array.push(country_obj.id);
+				}
+			});
+			return array;
+		}
+
+
+		const map = L.map('map').setView([0, 0], 1, 5);
 
 		// control that shows state info on hover
 		const info = L.control();
@@ -137,14 +207,10 @@
 		}).addTo(map);
 
 		// get color depending on majority of data
-		function getColor(d) {
-			return d > 1000 ? '#800026' :
-				d > 500 ? '#BD0026' :
-					d > 200 ? '#E31A1C' :
-						d > 100 ? '#FC4E2A' :
-							d > 50 ? '#FD8D3C' :
-								d > 20 ? '#FEB24C' :
-									d > 10 ? '#FED976' : '#FFEDA0';
+		function getColor(id) {
+			const r = Object.keys(database.countries).find(id);
+			if (r == undefined) { return "red"; }
+			return "yellow";
 		}
 
 		function style(feature) {
@@ -154,7 +220,7 @@
 				color: 'white',
 				dashArray: '3',
 				fillOpacity: 0.7,
-				fillColor: '#FFEDA0'
+				fillColor: "red"//getColor(feature.id),
 			};
 		}
 
@@ -165,7 +231,9 @@
 		}).addTo(map);
 
 		geojson.eachLayer(function (layer) {
-			layer.bindPopup(layer.feature.properties.country_name);
+			const id = layer.feature.id;
+			const country_id = Object.keys(database.countries).find(country_id => country_id == id);
+			if (country_id != undefined) { layer.bindPopup(database.countries[country_id].country_name); }
 		});
 
 
@@ -192,18 +260,17 @@
 				geojson.resetStyle(e.target);
 				info.update();
 			}
-
 			resetHighlight(e);
 		}
 
 		async function onClick(e) {
-
 			// map.fitBounds(e.target.getBounds());
-			var layer = e.target;
-			var country = layer.feature.id;
-			const data = await loadCountryData();
-			const countryName = data.countries[country].country_name;
-			var popupContent = await get_filtered_popup(country,"basket","female",data);
+			let layer = e.target; // gets layer
+			const country_id = layer.feature.id; // get id del pais
+			// await console.log(country_id);
+			// const countryName = database.countries[country_id].country_name;
+			await console.log(get_filtered_popup(country_id, sport_f, team_sex_f, trainer_sex_f));
+			var popupContent = await get_filtered_popup(country_id, sport_f, team_sex_f, trainer_sex_f);
 			layer.bindPopup(popupContent).openPopup();
 		}
 

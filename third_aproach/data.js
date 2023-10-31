@@ -60,4 +60,3 @@ function get_geojson(template,database) {
 
 
 
-

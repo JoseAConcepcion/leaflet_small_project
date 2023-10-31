@@ -258,17 +258,8 @@
 
       function updateMap() {
           geojson.eachLayer(function (layer) {
-            const id = layer.feature.id;
-
-          layer.setStyle({
-          weight: 2,
-          opacity: 1,
-          color: "white",
-          dashArray: "3",
-          fillOpacity: 0.7,
-          fillColor: activeCountries.includes(id) ? 'pink' : getColor(id),
-
-          });
+          const id = layer.feature.id;
+          layer.setStyle({fillColor: activeCountries.includes(id) ? 'pink' : getColor(id)});
           geojson.addTo(map);
         }
       )};

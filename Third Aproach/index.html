@@ -115,9 +115,16 @@
                 <option value="!developed">En desarrollo</option>
               </select>
             
-          </div>
+              <span>Continente:&nbsp;</span> 
+              <select>
+                <option value="América" onclick="resaltarContinente(value)">America</option>
+                <option value="África" onclick="resaltarContinente(value)">Africa</option>
+                <option value="Asia" onclick="resaltarContinente(value)">Asia</option>
+                <option value="Europa" onclick="resaltarContinente(value)">Europa</option>
+                <option value="Australia y Oceanía" onclick="resaltarContinente(value)">Oceania</option>
+              </select>
 
-        
+          </div>
       </div>
 
 
@@ -232,12 +239,23 @@
         updateMap();
       }
 
-      async function resaltarPresentes3() {
+      async function resaltarContinente(continent) {
         fetch('data.json') // Especifica la ubicación del archivo JSON
         .then(response => response.json()) // Convierte la respuesta en JSON
         .then(data => {
           // Haces algo con los datos JSON
-          const continente = "África";
+          // const continente = "África";
+          activeCountries = getPaisesEnContinente(data, continent);
+          updateMap();
+        })
+      }
+
+      async function resaltarAmerica() {
+        fetch('data.json') // Especifica la ubicación del archivo JSON
+        .then(response => response.json()) // Convierte la respuesta en JSON
+        .then(data => {
+          // Haces algo con los datos JSON
+          const continente = "América";
           activeCountries = getPaisesEnContinente(data, continente);
           updateMap();
         })

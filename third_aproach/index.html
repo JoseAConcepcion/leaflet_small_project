@@ -162,7 +162,7 @@
 		// changes map colors according to filters NOT IMPLEMENTED
 		async function change_colors() {
 			const array = await get_filtered_list();
-			console.log(array);
+			// console.log(array);
 		}
 
 		// si el pais con (id) pasa los filtros (el resto de los argumentos)
@@ -177,19 +177,21 @@
 			const continent = document.getElementById("continent").value;
 
 			const countries = database.sports[sport][team_sex].countries;
+			await console.log(countries);
 
 			const ans = countries.find(team => {
 				team.country_id == id;
 				if (trainer_sex != "all") {
 					team.manager_sex == trainer_sex;
 				}
-				if (development != "all") {
-					team.development == database.countries[id].development;
-				}
-				if (continent != "all") {
-					team.development == database.countries[id].development;
-				}
+				// if (development != "all") {
+				// 	team.development == database.countries[id].development;
+				// }
+				// if (continent != "all") {
+				// 	team.development == database.countries[id].development;
+				// }
 			});
+			await console.log(ans);
 			return ans;
 		}
 
@@ -197,9 +199,9 @@
 		// de los paises que los cumplen
 		async function get_filtered_list() {
 			const array = [];
-			const countries_arr = countriesData.feautures;
+			const countries_arr = countriesData.features;
 			await countries_arr.forEach(country_obj => {
-				if (passes_filter(country_obj.id, sport_f, team_sex_f, trainer_sex_f, development_f) != undefined) {
+				if (passes_filter(country_obj.id) != undefined) {
 					array.push(country_obj.id);
 				}
 			});

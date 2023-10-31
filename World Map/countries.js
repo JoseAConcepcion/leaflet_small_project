@@ -13790,28 +13790,6 @@ var countriesData = {
         ],
       },
     },
-    {
-      type: "Feature",
-      id: "mas",
-      properties: {
-        name: "Baréin",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [50.52564, 26.16835],
-      },
-    },
-    {
-      type: "Feature",
-      id: "sam",
-      properties: {
-        name: "Samoa",
-      },
-      geometry: {
-        type: "Point",
-        coordinates: [-172.05893, -13.85302],
-      },
-    },
     
     {
       type: "Feature",

@@ -5557,7 +5557,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "grl",
-      properties: { name: "Greenland" },
+      properties: { name: "Groenlandia" },
       geometry: {
         type: "Polygon",
         coordinates: [

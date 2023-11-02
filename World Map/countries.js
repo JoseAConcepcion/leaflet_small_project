@@ -4,7 +4,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "afg",
-      properties: { name: "Afghanistan" },
+      properties: { name: "Afganistán" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -212,7 +212,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "are",
-      properties: { name: "United Arab Emirates" },
+      properties: { name: "Emiratos Árabes Unidos" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -1444,7 +1444,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "aze",
-      properties: { name: "Azerbaijan" },
+      properties: { name: "Azerbaiyán" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -1531,7 +1531,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "bel",
-      properties: { name: "Belgium" },
+      properties: { name: "Bélgica" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -1558,7 +1558,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "ben",
-      properties: { name: "Benin" },
+      properties: { name: "Benín" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -1646,7 +1646,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "bgd",
-      properties: { name: "Bangladesh" },
+      properties: { name: "Bangladés" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -1777,7 +1777,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "bih",
-      properties: { name: "Bosnia and Herzegovina" },
+      properties: { name: "Bosnia y Herzegovina" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -1811,7 +1811,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "blr",
-      properties: { name: "Belarus" },
+      properties: { name: "Bielorrusia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -1867,7 +1867,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "blz",
-      properties: { name: "Belize" },
+      properties: { name: "Belice" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -2069,7 +2069,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "bra",
-      properties: { name: "Brazil" },
+      properties: { name: "Brasil" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -2284,7 +2284,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "brn",
-      properties: { name: "Brunei" },
+      properties: { name: "Brunéi" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -2304,7 +2304,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "btn",
-      properties: { name: "Bhutan" },
+      properties: { name: "Bután" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -2329,7 +2329,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "bwa",
-      properties: { name: "Botswana" },
+      properties: { name: "Botsuana" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -2381,7 +2381,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "caf",
-      properties: { name: "Central African Republic" },
+      properties: { name: "República Centroafricana" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -2455,7 +2455,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "can",
-      properties: { name: "Canada" },
+      properties: { name: "Canadá" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -3377,7 +3377,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "sui",
-      properties: { name: "Switzerland" },
+      properties: { name: "Suiza" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -3803,7 +3803,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "civ",
-      properties: { name: "Ivory Coast" },
+      properties: { name: "Costa de Marfil" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -3861,7 +3861,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "cmr",
-      properties: { name: "Cameroon" },
+      properties: { name: "Camerún" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -4343,7 +4343,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "-99",
-      properties: { name: "Northern Cyprus" },
+      properties: { name: "Northern Chipre" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -4371,7 +4371,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "cyp",
-      properties: { name: "Cyprus" },
+      properties: { name: "Chipre" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -4445,7 +4445,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "ger",
-      properties: { name: "Germany" },
+      properties: { name: "Alemania" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -4515,7 +4515,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "dji",
-      properties: { name: "Djibouti" },
+      properties: { name: "Yibuti" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -4542,7 +4542,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "den",
-      properties: { name: "Denmark" },
+      properties: { name: "Dinamarca" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -4584,7 +4584,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "dom",
-      properties: { name: "Dominican Republic" },
+      properties: { name: "República Dominicana" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -4622,7 +4622,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "alg",
-      properties: { name: "Algeria" },
+      properties: { name: "Argelia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -4741,7 +4741,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "egy",
-      properties: { name: "Egypt" },
+      properties: { name: "Egipto" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -4835,7 +4835,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "esp",
-      properties: { name: "Spain", count: 5123 },
+      properties: { name: "España", count: 5123 },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -4927,7 +4927,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "eth",
-      properties: { name: "Ethiopia" },
+      properties: { name: "Etiopía" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -4998,7 +4998,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "fin",
-      properties: { name: "Finland" },
+      properties: { name: "Finlandia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -5048,7 +5048,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "fij",
-      properties: { name: "Fiji" },
+      properties: { name: "Fiyi" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -5114,7 +5114,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "fra",
-      properties: { name: "France", count: 1 },
+      properties: { name: "Francia", count: 1 },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -5187,7 +5187,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "gab",
-      properties: { name: "Gabon" },
+      properties: { name: "Gabón" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -5466,7 +5466,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "gnq",
-      properties: { name: "Equatorial Guinea" },
+      properties: { name: "Guinea Ecuatorial" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -5485,7 +5485,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "gre",
-      properties: { name: "Greece" },
+      properties: { name: "Grecia" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -5900,7 +5900,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "cro",
-      properties: { name: "Croatia" },
+      properties: { name: "Croacia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -5954,7 +5954,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "hai",
-      properties: { name: "Haiti" },
+      properties: { name: "Haití" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -5987,7 +5987,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "hun",
-      properties: { name: "Hungary" },
+      properties: { name: "Hungría" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -6490,7 +6490,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "irl",
-      properties: { name: "Ireland" },
+      properties: { name: "Irlanda" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -6515,7 +6515,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "iri",
-      properties: { name: "Iran" },
+      properties: { name: "Irán" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -6602,7 +6602,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "irq",
-      properties: { name: "Iraq" },
+      properties: { name: "Irak" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -6644,7 +6644,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "isl",
-      properties: { name: "Iceland" },
+      properties: { name: "Islandia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -6711,7 +6711,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "ita",
-      properties: { name: "Italy" },
+      properties: { name: "Italia" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -6843,7 +6843,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "jor",
-      properties: { name: "Jordan" },
+      properties: { name: "Jordania" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -6874,7 +6874,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "jpn",
-      properties: { name: "Japan" },
+      properties: { name: "Japón" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -6961,7 +6961,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "kaz",
-      properties: { name: "Kazakhstan" },
+      properties: { name: "Kazajistán" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7085,7 +7085,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "ken",
-      properties: { name: "Kenya" },
+      properties: { name: "Kenia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7134,7 +7134,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "kgz",
-      properties: { name: "Kyrgyzstan" },
+      properties: { name: "Kirguistán" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7181,7 +7181,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "khm",
-      properties: { name: "Cambodia" },
+      properties: { name: "Camboya" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7210,7 +7210,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "kor",
-      properties: { name: "South Korea" },
+      properties: { name: "Corea del Sur" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7344,7 +7344,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "lib",
-      properties: { name: "Lebanon" },
+      properties: { name: "Líbano" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7406,7 +7406,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "lby",
-      properties: { name: "Libya" },
+      properties: { name: "Libia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7496,7 +7496,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "lso",
-      properties: { name: "Lesotho" },
+      properties: { name: "Lesoto" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7520,7 +7520,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "ltu",
-      properties: { name: "Lithuania" },
+      properties: { name: "Lituania" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7551,7 +7551,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "lux",
-      properties: { name: "Luxembourg" },
+      properties: { name: "Luxemburgo" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7570,7 +7570,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "lat",
-      properties: { name: "Latvia" },
+      properties: { name: "Letonia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7604,7 +7604,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "mar",
-      properties: { name: "Morocco" },
+      properties: { name: "Marruecos" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7680,7 +7680,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "mda",
-      properties: { name: "Moldova" },
+      properties: { name: "Moldavia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7780,7 +7780,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "mex",
-      properties: { name: "Mexico", count: 200 },
+      properties: { name: "México", count: 200 },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -7991,7 +7991,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "mli",
-      properties: { name: "Mali" },
+      properties: { name: "Malí" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -8452,7 +8452,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "mwi",
-      properties: { name: "Malawi" },
+      properties: { name: "Malaui" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -8492,7 +8492,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "mys",
-      properties: { name: "Malaysia" },
+      properties: { name: "Malasia" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -8653,7 +8653,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "ner",
-      properties: { name: "Niger" },
+      properties: { name: "Níger" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -8723,7 +8723,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "ngr",
-      properties: { name: "Nigeria" },
+      properties: { name: "Nígeria" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -8857,7 +8857,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "ned",
-      properties: { name: "Netherlands" },
+      properties: { name: "Países Bajos" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -8883,7 +8883,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "nor",
-      properties: { name: "Norway" },
+      properties: { name: "Noruega" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -9032,7 +9032,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "nzl",
-      properties: { name: "New Zealand" },
+      properties: { name: "Nueva Zelanda" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -9116,7 +9116,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "omn",
-      properties: { name: "Oman" },
+      properties: { name: "Omán" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -9181,7 +9181,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "pak",
-      properties: { name: "Pakistan" },
+      properties: { name: "Pakistán" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -9259,7 +9259,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "pan",
-      properties: { name: "Panama" },
+      properties: { name: "Panamá" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -9323,7 +9323,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "per",
-      properties: { name: "Peru" },
+      properties: { name: "Perú" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -9411,7 +9411,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "phi",
-      properties: { name: "Philippines" },
+      properties: { name: "Filipinas" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -9559,7 +9559,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "png",
-      properties: { name: "Papua New Guinea" },
+      properties: { name: "Papúa Nueva Guinea" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -9666,7 +9666,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "pol",
-      properties: { name: "Poland" },
+      properties: { name: "Polonia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -9744,7 +9744,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "prk",
-      properties: { name: "North Korea" },
+      properties: { name: "Corea del Norte" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -9889,7 +9889,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "qat",
-      properties: { name: "Qatar" },
+      properties: { name: "Catar" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -9910,7 +9910,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "rou",
-      properties: { name: "Romania" },
+      properties: { name: "Rumanía" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -9966,7 +9966,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "rus",
-      properties: { name: "Russia", count: 150 },
+      properties: { name: "Rusia", count: 150 },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -10626,7 +10626,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "rwa",
-      properties: { name: "Rwanda" },
+      properties: { name: "Ruanda" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -10691,7 +10691,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "ksa",
-      properties: { name: "Saudi Arabia" },
+      properties: { name: "Arabia Saudita" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -10779,7 +10779,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "sdn",
-      properties: { name: "Sudan" },
+      properties: { name: "Sudán" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -10870,7 +10870,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "ssd",
-      properties: { name: "South Sudan" },
+      properties: { name: "Sudán del Sur" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -11001,7 +11001,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "slb",
-      properties: { name: "Solomon Islands" },
+      properties: { name: "Islas Salomón" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -11068,7 +11068,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "sle",
-      properties: { name: "Sierra Leone" },
+      properties: { name: "Sierra Leona" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -11276,7 +11276,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "sur",
-      properties: { name: "Suriname" },
+      properties: { name: "Surinam" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -11314,7 +11314,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "svk",
-      properties: { name: "Slovakia" },
+      properties: { name: "Eslovaquia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -11359,7 +11359,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "slo",
-      properties: { name: "Slovenia" },
+      properties: { name: "Eslovenia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -11389,7 +11389,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "swe",
-      properties: { name: "Sweden" },
+      properties: { name: "Suecia" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -11510,7 +11510,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "syr",
-      properties: { name: "Syria" },
+      properties: { name: "Siria" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -11650,7 +11650,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "tha",
-      properties: { name: "Thailand" },
+      properties: { name: "Tailandia" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -11726,7 +11726,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "tjk",
-      properties: { name: "Tajikistan" },
+      properties: { name: "Tayikistán" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -11779,7 +11779,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "tkm",
-      properties: { name: "Turkmenistan" },
+      properties: { name: "Turkmenistán" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -11868,7 +11868,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "tto",
-      properties: { name: "Trinidad and Tobago" },
+      properties: { name: "Trinidad y Tobago" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -11888,7 +11888,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "tun",
-      properties: { name: "Tunisia" },
+      properties: { name: "Túnez" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -11931,7 +11931,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "tur",
-      properties: { name: "Turkey" },
+      properties: { name: "Turquía" },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -12137,7 +12137,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "ukr",
-      properties: { name: "Ukraine" },
+      properties: { name: "Ucrania" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -12280,7 +12280,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "usa",
-      properties: { name: "United States of America", count: 50 },
+      properties: { name: "Estados Unidos de América", count: 50 },
       geometry: {
         type: "MultiPolygon",
         coordinates: [
@@ -12773,7 +12773,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "uzb",
-      properties: { name: "Uzbekistan" },
+      properties: { name: "Uzbekistán" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -13106,7 +13106,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "rsa",
-      properties: { name: "South Africa" },
+      properties: { name: "Sudáfrica" },
       geometry: {
         type: "Polygon",
         coordinates: [
@@ -13287,7 +13287,7 @@ var countriesData = {
     {
       type: "Feature",
       id: "zim",
-      properties: { name: "Zimbabwe" },
+      properties: { name: "Zimbabue" },
       geometry: {
         type: "Polygon",
         coordinates: [

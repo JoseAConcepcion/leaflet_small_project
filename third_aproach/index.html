@@ -143,12 +143,43 @@
 		// let trainer_sex_f = document.getElementById("trainer_sex").value;
 		// let development_f = document.getElementById("development").value;
 
+		async function passes_filter(id) {
+
+
+			const database = await loadCountryData();
+
+			const sport = document.getElementById("sport").value;
+			const team_sex = document.getElementById("team_sex").value;
+			const trainer_sex = document.getElementById("trainer_sex").value;
+			const development = document.getElementById("development").value;
+			const continent = document.getElementById("continent").value;
+
+			const countries = database.sports[sport][team_sex].countries;
+		
+			let bool;
+			let ans;
+			await countries.forEach(team => {
+				let condition = team.country_id == id;
+				// console.log(condition);
+				if (condition) {
+					if (trainer_sex != "all" && condition) { condition = trainer_sex == team.manager_sex; }
+					if (development != "all" && condition) { condition = development == database.countries[id].development; }
+					if (continent != "all" && condition) { condition = continent == database.countries[id].continent; }
+					bool = condition;
+					ans = team;
+				}
+			});
+			if (bool) {return ans; }
+			else{return undefined;}
+		}
+
 		// funcion para crear el popup a partir de los filtros
 		async function get_filtered_popup(id) {
-			// const database = await loadCountryData();
-			const obj = await passes_filter(id);
-
+			const database = await loadCountryData();
+			let obj = await passes_filter(id);
+			// await console.log(obj);
 			if (obj != undefined) {
+
 				const name = database.countries[id].country_name;
 				const text =
 					name + "\n" +
@@ -167,33 +198,8 @@
 
 		// si el pais con (id) pasa los filtros (el resto de los argumentos)
 		// lo retorna. si no, devuelve undefined
-		async function passes_filter(id) {
-			const database = await loadCountryData();
 
-			const sport = document.getElementById("sport").value;
-			const team_sex = document.getElementById("team_sex").value;
-			const trainer_sex = document.getElementById("trainer_sex").value;
-			const development = document.getElementById("development").value;
-			const continent = document.getElementById("continent").value;
 
-			const countries = database.sports[sport][team_sex].countries;
-			await console.log(countries);
-
-			const ans = countries.find(team => {
-				team.country_id == id;
-				if (trainer_sex != "all") {
-					team.manager_sex == trainer_sex;
-				}
-				// if (development != "all") {
-				// 	team.development == database.countries[id].development;
-				// }
-				// if (continent != "all") {
-				// 	team.development == database.countries[id].development;
-				// }
-			});
-			await console.log(ans);
-			return ans;
-		}
 
 		// Halla los filtros de los select y devuelve un array con los id
 		// de los paises que los cumplen
@@ -295,8 +301,8 @@
 			const country_id = layer.feature.id; // get id del pais
 			// await console.log(country_id);
 			// const countryName = database.countries[country_id].country_name;
-			await console.log(get_filtered_popup(country_id));
 			var popupContent = await get_filtered_popup(country_id);
+			// await console.log(popupContent);
 			layer.bindPopup(popupContent).openPopup();
 		}
 

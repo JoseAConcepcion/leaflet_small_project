@@ -10,7 +10,7 @@
 
 	<link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
 
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+	<link rel="stylesheet" href="../data/leaflet.css"
 		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -74,278 +74,299 @@
 </head>
 
 <body>
-	<div id="selectors" display="block"><span>Deportes:&nbsp;</span>
-		<select id="sport" onchange="change_colors()">
-			<option value="baseball"> Béisbol</option>
-			<option value="voly"> Volleyball</option>
-			<option value="futbol"> Fútbol</option>
-			<option value="rugby"> Rugby</option>
-			<option value="handball"> Balonmano</option>
-			<option value="softball"> Softball</option>
-			<option value="polo"> Polo</option>
-			<option value="hockey"> Hockey</optio>
-			<option value="basket"> Baloncesto</option>
-		</select>
+	<div class="centered-content">
+		<div class="graph-text main-text">
+			<h1 class="oracion">
+				Mapa interactivo de los diferentes entrenadores por países
+			</h1>
+		</div>
 
-		<span>Género:&nbsp;</span>
-		<select id="team_sex" onchange="change_colors()">
-			<option value="female">Femenino</option>
-			<option value="male">Masculino</option>
-		</select>
+		<div id="selectors" onchange="updateMap()" display="block"><span>Deportes:&nbsp;</span>
+			<select id="sport">
+				<option value="baseball"> Béisbol</option>
+				<option value="voly"> Volleyball</option>
+				<option value="futbol"> Fútbol</option>
+				<option value="rugby"> Rugby</option>
+				<option value="handball"> Balonmano</option>
+				<option value="softball"> Softball</option>
+				<option value="polo"> Polo</option>
+				<option value="hockey"> Hockey</optio>
+				<option value="basket"> Baloncesto</option>
+			</select>
 
-		<span>Entrenadores:&nbsp;</span>
-		<select id="trainer_sex" onchange="change_colors()">
-			<option value="all">Todos</option>
-			<option value="female">Mujeres</option>
-			<option value="male">Hombres</option>
-		</select>
+			<span>Género:&nbsp;</span>
+			<select id="team_sex">
+				<option value="female">Femenino</option>
+				<option value="male">Masculino</option>
+			</select>
 
-		<span>Desarrollo:&nbsp;</span>
-		<select id="development" onchange="change_colors()">
-			<option value="all">Todos</option>
-			<option value="">Desarrollado</option>
-			<option value="">En desarrollo</option>
-		</select>
+			<span>Entrenadores:&nbsp;</span>
+			<select id="trainer_sex">
+				<option value="all">Todos</option>
+				<option value="female">Mujeres</option>
+				<option value="male">Hombres</option>
+			</select>
 
-		<span>Continent:&nbsp;</span>
-		<select id="continent" onchange="change_colors()">
-			<option value="all">Todos</option>
-			<option value="África">África</option>
-			<option value="Australia y Oceanía">Australia y Oceanía</option>
-			<option value="América">América</option>
-			<option value="Europa">Europa</option>
-			<option value="Asia">Asia</option>
-		</select>
+			<span>Desarrollo:&nbsp;</span>
+			<select id="development">
+				<option value="all">Todos</option>
+				<option value="">Desarrollado</option>
+				<option value="">En desarrollo</option>
+			</select>
 
-		<br><br>
-	</div>
+			<span>Continent:&nbsp;</span>
+			<select id="continent">
+				<option value="all">Todos</option>
+				<option value="África">África</option>
+				<option value="Australia y Oceanía">Australia y Oceanía</option>
+				<option value="América">América</option>
+				<option value="Europa">Europa</option>
+				<option value="Asia">Asia</option>
+			</select>
 
-	<div id='map' display="block"></div>
-
-	<script type="text/javascript" src="countries.js"></script>
-	<!-- <script type="text/javascript" src="data.js"></script> -->
-	<script type="text/javascript">
-
-		// carga los datos del data.json !!! fijarse que la direccion
-		// del json este correcta 
-		async function loadCountryData() {
-			const response = await fetch("../data/data.json");
-			const data = await response.json();
-			return data;
-		}
-
-		// carga la bse de datos
-		// const database = await loadCountryData();
-
-		// carga el valor de los filtros
-		// let sport_f = document.getElementById("sport").value;
-		// let team_sex_f = document.getElementById("team_sex").value;
-		// let trainer_sex_f = document.getElementById("trainer_sex").value;
-		// let development_f = document.getElementById("development").value;
-
-		async function passes_filter(id) {
+			<br><br>
+		</div>
 
 
-			const database = await loadCountryData();
+		<div id='map' display="block"></div>
 
-			const sport = document.getElementById("sport").value;
-			const team_sex = document.getElementById("team_sex").value;
-			const trainer_sex = document.getElementById("trainer_sex").value;
-			const development = document.getElementById("development").value;
-			const continent = document.getElementById("continent").value;
+		<script type="text/javascript" src="countries.js"></script>
+		<!-- <script type="text/javascript" src="data.js"></script> -->
+		<script type="text/javascript">
 
-			const countries = database.sports[sport][team_sex].countries;
-		
-			let bool;
-			let ans;
-			await countries.forEach(team => {
-				let condition = team.country_id == id;
-				// console.log(condition);
-				if (condition) {
-					if (trainer_sex != "all" && condition) { condition = trainer_sex == team.manager_sex; }
-					if (development != "all" && condition) { condition = development == database.countries[id].development; }
-					if (continent != "all" && condition) { condition = continent == database.countries[id].continent; }
-					bool = condition;
-					ans = team;
-				}
-			});
-			if (bool) {return ans; }
-			else{return undefined;}
-		}
-
-		// funcion para crear el popup a partir de los filtros
-		async function get_filtered_popup(id) {
-			const database = await loadCountryData();
-			let obj = await passes_filter(id);
-			// await console.log(obj);
-			if (obj != undefined) {
-
-				const name = database.countries[id].country_name;
-				const text =
-					name + "\n" +
-					obj.manager_name + "\n" +
-					obj.result;
-				return text;
+			// carga los datos del data.json !!! fijarse que la direccion
+			// del json este correcta 
+			async function loadCountryData() {
+				const response = await fetch("../data/data.json");
+				const data = await response.json();
+				return data;
 			}
-			return "no participo";
-		}
 
-		// changes map colors according to filters NOT IMPLEMENTED
-		async function change_colors() {
-			const array = await get_filtered_list();
-			// console.log(array);
-		}
+			// carga la bse de datos
+			// const database = await loadCountryData();
 
-		// si el pais con (id) pasa los filtros (el resto de los argumentos)
-		// lo retorna. si no, devuelve undefined
+			// carga el valor de los filtros
+			// let sport_f = document.getElementById("sport").value;
+			// let team_sex_f = document.getElementById("team_sex").value;
+			// let trainer_sex_f = document.getElementById("trainer_sex").value;
+			// let development_f = document.getElementById("development").value;
 
-
-
-		// Halla los filtros de los select y devuelve un array con los id
-		// de los paises que los cumplen
-		async function get_filtered_list() {
-			const array = [];
-			const countries_arr = countriesData.features;
-			await countries_arr.forEach(country_obj => {
-				if (passes_filter(country_obj.id) != undefined) {
-					array.push(country_obj.id);
-				}
-			});
-			return array;
-		}
+			async function passes_filter(id) {
 
 
-		const map = L.map('map').setView([0, 0], 1, 5);
+				const database = await loadCountryData();
 
-		// control that shows state info on hover
-		const info = L.control();
+				const sport = document.getElementById("sport").value;
+				const team_sex = document.getElementById("team_sex").value;
+				const trainer_sex = document.getElementById("trainer_sex").value;
+				const development = document.getElementById("development").value;
+				const continent = document.getElementById("continent").value;
 
-		info.onAdd = function (map) {
-			this._div = L.DomUtil.create('div', 'info');
-			this.update();
-			return this._div;
-		};
+				const countries = database.sports[sport][team_sex].countries;
 
-		info.update = function (props) {
-			this._div.innerHTML = `<h4>Countrie Important Info</h4>`;
-		};
-
-		info.addTo(map);
-
-		const tiles = L.tileLayer('Thunderforest.Transport', {
-			maxZoom: 5,
-			minZoom: 1,
-			attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, contributors',
-		}).addTo(map);
-
-		// get color depending on majority of data
-		function getColor(id) {
-			const r = Object.keys(database.countries).find(id);
-			if (r == undefined) { return "red"; }
-			return "yellow";
-		}
-
-		function style(feature) {
-			return {
-				weight: 2,
-				opacity: 1,
-				color: 'white',
-				dashArray: '3',
-				fillOpacity: 0.7,
-				fillColor: "red"//getColor(feature.id),
-			};
-		}
-
-		/* global statesData */
-		const geojson = L.geoJson(countriesData, {
-			style,
-			onEachFeature
-		}).addTo(map);
-
-		geojson.eachLayer(function (layer) {
-			const id = layer.feature.id;
-			const country_id = Object.keys(database.countries).find(country_id => country_id == id);
-			if (country_id != undefined) { layer.bindPopup(database.countries[country_id].country_name); }
-		});
-
-
-		function onMouseOver(e) {
-			function highlightFeature(e) {
-				const layer = e.target;
-				layer.setStyle({
-					weight: 5,
-					color: "#666",
-					dashArray: "",
-					fillOpacity: 0.7
+				let bool;
+				let ans;
+				await countries.forEach(team => {
+					let condition = team.country_id == id;
+					// console.log(condition);
+					if (condition) {
+						if (trainer_sex != "all" && condition) { condition = trainer_sex == team.manager_sex; }
+						if (development != "all" && condition) { condition = development == database.countries[id].development; }
+						if (continent != "all" && condition) { condition = continent == database.countries[id].continent; }
+						bool = condition;
+						ans = team;
+					}
 				});
-
-				layer.bringToFront();
-				info.update(layer.feature.properties);
+				if (bool) { return ans; }
+				else { return undefined; }
 			}
-			highlightFeature(e);
-		}
 
+			// funcion para crear el popup a partir de los filtros
+			async function get_filtered_popup(id) {
+				const database = await loadCountryData();
+				let obj = await passes_filter(id);
+				// await console.log(obj);
+				if (obj != undefined) {
 
-		function onMouseOut(e) {
-
-			function resetHighlight(e) {
-				geojson.resetStyle(e.target);
-				info.update();
+					const name = database.countries[id].country_name;
+					const text =
+						name + "\n" +
+						obj.manager_name + "\n" +
+						obj.result;
+					return text;
+				}
+				return "no participo";
 			}
-			resetHighlight(e);
-		}
 
-		async function onClick(e) {
-			// map.fitBounds(e.target.getBounds());
-			let layer = e.target; // gets layer
-			const country_id = layer.feature.id; // get id del pais
-			// await console.log(country_id);
-			// const countryName = database.countries[country_id].country_name;
-			var popupContent = await get_filtered_popup(country_id);
-			// await console.log(popupContent);
-			layer.bindPopup(popupContent).openPopup();
-		}
+
+			// si el pais con (id) pasa los filtros (el resto de los argumentos)
+			// lo retorna. si no, devuelve undefined
 
 
 
-		function onEachFeature(feature, layer) {
-			// layer.bindPopup('<p>Hello world!<br />This is a nice popup.</p>'),
-			layer.on({
-				mouseover: onMouseOver,
-				mouseout: onMouseOut,
-				click: onClick
+			// Halla los filtros de los select y devuelve un array con los id
+			// de los paises que los cumplen
+			async function get_filtered_list() {
+				const array = [];
+				const countries_arr = countriesData.features;
+				for(i=0;i<countries_arr.length;i++){
+					let curr = countries_arr[i];
+					let f= await passes_filter(curr.id);
+					if(f!=undefined){
+						array.push(curr.id);
+					}
+				}
+				console.log(array);
+				return array;
+			}
+
+
+			const map = L.map('map').setView([0, 0], 1, 5);
+
+			// control that shows state info on hover
+			const info = L.control();
+
+			info.onAdd = function (map) {
+				this._div = L.DomUtil.create('div', 'info');
+				this.update();
+				return this._div;
+			};
+
+			info.update = function (props) {
+				this._div.innerHTML = `<h4>Countrie Important Info</h4>`;
+			};
+
+			info.addTo(map);
+
+			const tiles = L.tileLayer('Thunderforest.Transport', {
+				maxZoom: 5,
+				minZoom: 1,
+				attribution: '&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, contributors',
+			}).addTo(map);
+
+			// get color depending on majority of data
+			function getColor(id) {
+				const r = Object.keys(database.countries).find(id);
+				if (r == undefined) { return "red"; }
+				return "yellow";
+			}
+
+			async function style(feature) {
+
+				return {
+					weight: 2,
+					opacity: 1,
+					color: 'white',
+					dashArray: '3',
+					fillOpacity: 0.7,
+					fillColor: "red"//getColor(feature.id),
+				};
+			}
+
+			/* global statesData */
+			const geojson = L.geoJson(countriesData, {
+				style,
+				onEachFeature
+			}).addTo(map);
+
+			geojson.eachLayer(function (layer) {
+				const database = loadCountryData();
+				const id = layer.feature.id;
+				const country_id = Object.keys(database.countries).find(country_id => country_id == id);
+				if (country_id != undefined) { layer.bindPopup(database.countries[country_id].country_name); }
 			});
-		}
 
-		// Map Atribution
-		map.attributionControl.addAttribution('copyrigth info; <a href="http://source.cu/">Source</a>');
 
-		//Creacion e instanciacion de la Leyenda con el significado de los colores del mapa
-		const legend = L.control({ position: 'bottomright' });
-		legend.onAdd = function (map) {
-
-			const div = L.DomUtil.create('div', 'info legend');
-			const grades = [0, 10, 20, 50, 100, 200, 500, 1000];
-			const labels = [];
-			let from, to;
-
-			for (let i = 0; i < grades.length; i++) {
-				from = grades[i];
-				to = grades[i + 1];
-
-				labels.push(`<i style="background:${getColor(from + 1)}"></i> ${from}${to ? `&ndash;${to}` : '+'}`);
+			function onMouseOver(e) {
+				// function highlightFeature(e) {
+				// 	const layer = e.target;
+				// 	layer.setStyle({
+				// 		weight: 5,
+				// 		dashArray: "",
+				// 		fillOpacity: 0.7
+				// 	});
+				// 	layer.bringToFront();
+				// 	info.update(layer.feature.properties);
+				// }
+				// highlightFeature(e);
 			}
 
-			div.innerHTML = labels.join('<br>');
-			return div;
-		};
-		legend.addTo(map);
-		// Leyenda End
 
-		map.on('click', onMapClick);
+			function onMouseOut(e) {
+
+				// function resetHighlight(e) {
+				// 	geojson.resetStyle(e.target);
+				// 	info.update();
+				// }
+				// resetHighlight(e);
+
+			}
+
+			async function onClick(e) {
+				// map.fitBounds(e.target.getBounds());
+				let layer = e.target; // gets layer
+				const country_id = layer.feature.id; // get id del pais
+				// await console.log(country_id);
+				// const countryName = database.countries[country_id].country_name;
+				var popupContent = await get_filtered_popup(country_id);
+				// await console.log(popupContent);
+				layer.bindPopup(popupContent).openPopup();
+			}
 
 
-	</script>
+
+			function onEachFeature(feature, layer) {
+				// layer.bindPopup('<p>Hello world!<br />This is a nice popup.</p>'),
+				layer.on({
+					mouseover: onMouseOver,
+					mouseout: onMouseOut,
+					click: onClick
+				});
+			}
+
+			async function updateMap() {
+				let activeCountries = await get_filtered_list();
+				// await console.log(activeCountries);
+				await geojson.eachLayer(function (layer) {
+					const id = layer.feature.id;
+					let color = "red";
+					if(activeCountries.includes(id)){color = "pink"}
+					layer.setStyle( {fillColor:color});
+					geojson.addTo(map);
+				}
+				)
+			};
+
+
+			// Map Atribution
+			map.attributionControl.addAttribution('copyrigth info; <a href="http://source.cu/">Source</a>');
+
+			//Creacion e instanciacion de la Leyenda con el significado de los colores del mapa
+			const legend = L.control({ position: 'bottomright' });
+			legend.onAdd = function (map) {
+
+				const div = L.DomUtil.create('div', 'info legend');
+				const grades = [0, 10, 20, 50, 100, 200, 500, 1000];
+				const labels = [];
+				let from, to;
+
+				for (let i = 0; i < grades.length; i++) {
+					from = grades[i];
+					to = grades[i + 1];
+
+					labels.push(`<i style="background:${getColor(from + 1)}"></i> ${from}${to ? `&ndash;${to}` : '+'}`);
+				}
+
+				div.innerHTML = labels.join('<br>');
+				return div;
+			};
+			legend.addTo(map);
+			// Leyenda End
+
+			map.on('click', onMapClick);
+
+
+		</script>
 
 
 

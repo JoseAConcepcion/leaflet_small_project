@@ -255,7 +255,7 @@
 				return "yellow";
 			}
 
-			async function style(feature) {
+			function style(feature) {
 
 				return {
 					weight: 2,
@@ -335,11 +335,16 @@
 						activeCountries.push(countrie);
 					});
 				}
-				// await console.log(activeCountries);
+				console.log("active countries");
+				await console.log(activeCountries);
 				await geojson.eachLayer(function (layer) {
 					const id = layer.feature.id;
 					let color = "red";
-					if(activeCountries.includes(id)){color = "pink"}
+					// console.log("wal"==id);
+					if(activeCountries.includes(id)){
+						// console.log("includes id");
+						// console.log(id);
+						color = "pink";}
 					layer.setStyle( {fillColor:color});
 					geojson.addTo(map);
 				}

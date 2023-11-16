@@ -142,6 +142,10 @@
 				return data;
 			}
 
+			const UK = ["wal","sco","eng"];
+
+			// function 
+
 			// carga la bse de datos
 			// const database = await loadCountryData();
 
@@ -278,27 +282,27 @@
 
 
 			function onMouseOver(e) {
-				function highlightFeature(e) {
-					const layer = e.target;
-					layer.setStyle({
-						weight: 5,
-						dashArray: "",
-						fillOpacity: 0.7
-					})
-					layer.bringToFront();
-					info.update(layer.feature.properties);
-				}
-				highlightFeature(e);
+				// function highlightFeature(e) {
+				// 	const layer = e.target;
+				// 	layer.setStyle({
+				// 		weight: 5,
+				// 		dashArray: "",
+				// 		fillOpacity: 0.7
+				// 	})
+				// 	layer.bringToFront();
+				// 	info.update(layer.feature.properties);
+				// }
+				// highlightFeature(e);
 			}
 
 
 			function onMouseOut(e) {
 
-				function resetHighlight(e) {
-					geojson.resetStyle(e.target);
-					info.update();
-				}
-				resetHighlight(e);
+				// function resetHighlight(e) {
+				// 	geojson.resetStyle(e.target);
+				// 	info.update();
+				// }
+				// resetHighlight(e);
 
 			}
 
@@ -326,6 +330,11 @@
 
 			async function updateMap() {
 				let activeCountries = await get_filtered_list();
+				if(activeCountries.includes("gbr")){
+					await UK.forEach(countrie => {
+						activeCountries.push(countrie);
+					});
+				}
 				// await console.log(activeCountries);
 				await geojson.eachLayer(function (layer) {
 					const id = layer.feature.id;
@@ -336,6 +345,7 @@
 				}
 				)
 			};
+
 
 
 			// Map Atribution

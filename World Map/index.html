@@ -256,6 +256,7 @@
       );
 
       function updateMap() {
+        console.log(activeCountries);
           geojson.eachLayer(function (layer) {
           const id = layer.feature.id;
           layer.setStyle({fillColor: activeCountries.includes(id) ? 'pink' : getColor(id)});
@@ -543,8 +544,6 @@
         });
 
       });
-      
-
 
       //little countries
       var tonga = L.marker([-20.54838, -175.40676]).bindPopup("Tonga").addTo(map);
@@ -561,3 +560,4 @@
     </script>
   </body>
 </html>
+

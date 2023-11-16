@@ -469,9 +469,25 @@
       let continentsList= allCountries;
       let rankingList = allCountries;
 
+
+      const filterGender = document.getElementById("genderSelect");
+      const filterContinent = document.getElementById("continentSelect");
+      const filterDev = document.getElementById("devSelect");
+      const filterSport = document.getElementById("sportSelect");
+      const filterCategory = document.getElementById("categorySelect");
+      const filterRanking = document.getElementById("rankingSelect");
+
+
       // get color depending on majority of data
       function getColor(id) {
-        return activeCountries.includes(id) ? 'pink' : "#FFEDA0";
+        if(activeCountries.includes(id))
+        {
+          if(filterCategory.value == 'female') return 'pink';
+          if(filterCategory.value == 'male') return 'blue';
+        }
+        else{
+          return "#FFEDA0";
+        }
       }
 
       function style(feature) {
@@ -539,25 +555,11 @@
 
           geojson.eachLayer(function (layer) {
           const id = layer.feature.id;
-          layer.setStyle({fillColor: activeCountries.includes(id) ? 'pink' : getColor(id)});
+          layer.setStyle({fillColor: getColor(id)});
           geojson.addTo(map);
         }
       )};
 
-      async function resaltarPresentes() {
-        activeCountries.push('cub');
-        activeCountries.push('usa');
-        activeCountries.push('bra');
-
-        updateMap();
-      }
-
-      async function resaltarPresentes1() {
-        const newPaises = ['cub', 'rus', 'mex'];
-        activeCountries = newPaises;
-        updateMap();
-      }
-      
      
       function getCountriesBySport(json, sportName)
       {
@@ -687,13 +689,6 @@
         console.log(activeCountries);
         updateMap();
       }
-
-      const filterGender = document.getElementById("genderSelect");
-      const filterContinent = document.getElementById("continentSelect");
-      const filterDev = document.getElementById("devSelect");
-      const filterSport = document.getElementById("sportSelect");
-      const filterCategory = document.getElementById("categorySelect");
-      const filterRanking = document.getElementById("rankingSelect");
 
       $.getJSON('../data/data.json', function(data) {
         const filterMale = getCountryManagerSex(data, "male");

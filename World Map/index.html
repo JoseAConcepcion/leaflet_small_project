@@ -91,7 +91,7 @@
       </div>
 
       <div>
-        <div>
+        <div onchange="MergeCountries()">
           <span>Deportes:&nbsp;</span>
           <select id="sportSelect">
             <option value="null">---</option>
@@ -159,6 +159,280 @@
 
       const jsonData = getData();
 
+      const allCountries = [
+    "aus",
+    "can",
+    "hkg",
+    "mex",
+    "usa",
+    "cub",
+    "fra",
+    "jpn",
+    "pur",
+    "tpe",
+    "ven",
+    "kor",
+    "ned",
+    "ita",
+    "pan",
+    "chn",
+    "cze",
+    "col",
+    "gbr",
+    "isr",
+    "dom",
+    "nca",
+    "arg",
+    "bel",
+    "bra",
+    "usa",
+    "can",
+    "jpn",
+    "pur",
+    "cmr",
+    "cze",
+    "dom",
+    "ger",
+    "ned",
+    "ita",
+    "kaz",
+    "ken",
+    "kor",
+    "pol",
+    "srb",
+    "tha",
+    "tur",
+    "bul",
+    "cro",
+    "chn",
+    "col",
+    "slo",
+    "fra",
+    "ukr",
+    "iri",
+    "cub",
+    "tun",
+    "mex",
+    "egy",
+    "qat",
+    "aus",
+    "can",
+    "usa",
+    "chn",
+    "fra",
+    "jpn",
+    "kor",
+    "arg",
+    "bra",
+    "col",
+    "den",
+    "eng",
+    "ger",
+    "hai",
+    "ita",
+    "jam",
+    "mar",
+    "ned",
+    "nzl",
+    "ngr",
+    "nor",
+    "pan",
+    "phi",
+    "por",
+    "irl",
+    "rsa",
+    "esp",
+    "swe",
+    "sui",
+    "vie",
+    "zam",
+    "crc",
+    "ecu",
+    "mex",
+    "iri",
+    "wal",
+    "ksa",
+    "bel",
+    "srb",
+    "cro",
+    "cmr",
+    "uru",
+    "sen",
+    "qat",
+    "pol",
+    "tun",
+    "gha",
+    "bra",
+    "fra",
+    "chn",
+    "usa",
+    "can",
+    "aus",
+    "fij",
+    "jpn",
+    "col",
+    "eng",
+    "nzl",
+    "irl",
+    "mad",
+    "pol",
+    "rsa",
+    "esp",
+    "arg",
+    "ger",
+    "chi",
+    "kor",
+    "sco",
+    "wal",
+    "hkg",
+    "jam",
+    "ken",
+    "por",
+    "sam",
+    "tga",
+    "uga",
+    "uru",
+    "zim",
+    "nor",
+    "swe",
+    "chn",
+    "rou",
+    "iri",
+    "fra",
+    "jpn",
+    "kor",
+    "arg",
+    "kaz",
+    "esp",
+    "hun",
+    "ger",
+    "cze",
+    "ang",
+    "srb",
+    "bra",
+    "cro",
+    "cmr",
+    "par",
+    "uzb",
+    "cgo",
+    "ned",
+    "mne",
+    "pol",
+    "tun",
+    "pur",
+    "aut",
+    "slo",
+    "svk",
+    "rus",
+    "DEN",
+    "chi",
+    "ksa",
+    "cpv",
+    "uru",
+    "isl",
+    "por",
+    "alg",
+    "qat",
+    "mkd",
+    "egy",
+    "mar",
+    "usa",
+    "brn",
+    "bel",
+    "den",
+    "usa",
+    "aus",
+    "tpe",
+    "pur",
+    "jpn",
+    "can",
+    "ita",
+    "mex",
+    "arg",
+    "cub",
+    "ven",
+    "nzl",
+    "cze",
+    "phi",
+    "rsa",
+    "den",
+    "ned",
+    "esp",
+    "ita",
+    "usa",
+    "jpn",
+    "hun",
+    "aus",
+    "can",
+    "gre",
+    "fra",
+    "isr",
+    "nzl",
+    "rsa",
+    "chn",
+    "kaz",
+    "arg",
+    "cro",
+    "mne",
+    "srb",
+    "aus",
+    "can",
+    "esp",
+    "ned",
+    "ger",
+    "bel",
+    "eng",
+    "jpn",
+    "irl",
+    "rsa",
+    "kor",
+    "chi",
+    "ind",
+    "chn",
+    "nzl",
+    "arg",
+    "fra",
+    "mas",
+    "wal",
+    "aus",
+    "can",
+    "bel",
+    "bih",
+    "usa",
+    "chn",
+    "fra",
+    "jpn",
+    "kor",
+    "pur",
+    "srb",
+    "mli",
+    "ger",
+    "ang",
+    "bra",
+    "cpv",
+    "civ",
+    "egy",
+    "slo",
+    "esp",
+    "phi",
+    "fin",
+    "geo",
+    "gre",
+    "iri",
+    "ita",
+    "jor",
+    "lat",
+    "lib",
+    "ltu",
+    "mex",
+    "mne",
+    "nzl",
+    "dom",
+    "srd",
+    "ssd",
+    "ven"
+];
+
       async function getData() {
         const data = await $.getJSON('../data/data.json');
         return data;
@@ -188,6 +462,12 @@
       }).addTo(map);
 
       let activeCountries = [];
+      let sportsList = allCountries;
+      let team_sexList = allCountries;
+      let trainer_sexList= allCountries;
+      let developmentList= allCountries;
+      let continentsList= allCountries;
+      let rankingList = allCountries;
 
       // get color depending on majority of data
       function getColor(id) {
@@ -256,6 +536,7 @@
       );
 
       function updateMap() {
+
           geojson.eachLayer(function (layer) {
           const id = layer.feature.id;
           layer.setStyle({fillColor: activeCountries.includes(id) ? 'pink' : getColor(id)});
@@ -385,6 +666,27 @@
         return Array.from(new Set(countries));
       }
 
+      //shows the filtered countries
+      function MergeCountries()
+      {
+        console.log(team_sexList);
+        console.log(trainer_sexList);
+        // console.log(developmentList);
+        console.log(continentsList);
+        console.log(rankingList);
+        let intersection = sportsList.filter(value => 
+          team_sexList.includes(value) &&
+          trainer_sexList.includes(value) &&
+          continentsList.includes(value) &&
+          rankingList.includes(value)
+          // developmentList.includes(value) &&
+        );
+
+        activeCountries = intersection;
+        console.log("active");
+        console.log(activeCountries);
+        updateMap();
+      }
 
       const filterGender = document.getElementById("genderSelect");
       const filterContinent = document.getElementById("continentSelect");
@@ -417,17 +719,18 @@
         const filterRanking5_10 =   getCountriesByRank(data, 2);
         const filterRanking10Plus = getCountriesByRank(data, 3);
 
-        // updateMap();
-
         filterCategory.addEventListener("change", function () {
           const selectedValue = filterCategory.value;
           if(selectedValue !== "null")
           {
-            activeCountries = (selectedValue === "male") ? getCategory(data, selectedValue) : getCategory(data, selectedValue);
+            team_sexList = (selectedValue === "male") ? getCategory(data, selectedValue) : getCategory(data, selectedValue);
           }
           else
           {
-            activeCountries = [] //aqui iria un merge
+            // let json = getData();
+            team_sexList = allCountries;
+              console.log("all");
+              console.log(team_sexList);
           }
           updateMap();
         });
@@ -436,11 +739,12 @@
           const selectedValue = filterGender.value;
           if(selectedValue !== "null")
           {
-            activeCountries = (selectedValue === "male") ? filterMale : filterFemale;
+            trainer_sexList = (selectedValue === "male") ? filterMale : filterFemale;
           }
           else
           {
-            activeCountries = [] //aqui iria un merge
+            // let json = getData();
+            trainer_sexList = allCountries;
           }
           updateMap();
         });
@@ -449,19 +753,21 @@
           const selectedValue = continentSelect.value;
           if (selectedValue === "null")
           {
-            activeCountries = [] //aqui iria un merge
-          } else {
+            // let json = getData();
+            continentsList = allCountries;
+          }
+           else {
             
             if (selectedValue === "América") {
-              activeCountries = filterContinent;
+              continentsList = filterContinent;
             } else if (selectedValue === "África") {
-              activeCountries = filterContinent2;
+              continentsList = filterContinent2;
             } else if (selectedValue === "Asia") {
-              activeCountries = filterContinent3;
+              continentsList = filterContinent3;
             } else if (selectedValue === "Europa") {
-              activeCountries = filterContinent4;
+              continentsList = filterContinent4;
             } else if (selectedValue === "Australia y Oceanía") {
-              activeCountries = filterContinent5;
+              continentsList = filterContinent5;
             }
           }
           updateMap();
@@ -472,12 +778,14 @@
           const selectedValue = filterSport.value;
 
           if (selectedValue === "null") {
-            activeCountries = []; // Aquí iría un merge
+            // let json =  getData();
+            allCountries;
+            // sportList = [];
           } else {
             switch (selectedValue) {
               case "all":
                 // Muestra todos los países
-                activeCountries = [].concat(
+                sportsList = [].concat(
                   filterBaseball,
                   filterVolleyball,
                   filterFutbol,
@@ -490,35 +798,37 @@
                 );
                 break;
               case "baseball":
-                activeCountries = filterBaseball;
+                sportsList = filterBaseball;
                 break;
               case "voly":
-                activeCountries = filterVolleyball;
+                sportsList = filterVolleyball;
                 break;
               case "futbol":
-                activeCountries = filterFutbol;
+                sportsList = filterFutbol;
                 break;
               case "rugby":
-                activeCountries = filterRugby;
+                sportsList = filterRugby;
                 break;
               case "handball":
-                activeCountries = filterHandball;
+                sportsList = filterHandball;
                 break;
               case "softball":
-                activeCountries = filterSoftball;
+                sportsList = filterSoftball;
                 break;
               case "polo":
-                activeCountries = filterPolo;
+                sportsList = filterPolo;
                 break;
               case "hockey":
-                activeCountries = filterHockey;
+                sportsList = filterHockey;
                 break;
               case "basket":
-                activeCountries = filterBasket;
+                sportsList = filterBasket;
                 break;
               default:
                 // En caso de un valor desconocido
-                activeCountries = [];
+                // let json = getData();
+                sportsList = allCountries;
+                // sportsList = [];
                 break;
             }
           }
@@ -530,13 +840,15 @@
           const selectedValue = filterRanking.value;
 
           if (selectedValue === "null") {
-            activeCountries = []; // Aquí iría un merge
+            // let json = getData();
+            rankingList = allCountries;
+            // rankingList = []; // Aquí iría un merge
           } else if (selectedValue === "1") {
-            activeCountries = filterRanking1_4;
+            rankingList = filterRanking1_4;
           } else if (selectedValue === "2") {
-            activeCountries = filterRanking5_10;
+            rankingList = filterRanking5_10;
           } else if (selectedValue === "3") {
-            activeCountries = filterRanking10Plus;
+            rankingList = filterRanking10Plus;
           }
 
           updateMap();

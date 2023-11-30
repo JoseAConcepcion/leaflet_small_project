@@ -119,21 +119,6 @@
               <option value="female">Mujeres</option>
               <option value="male">Hombres</option>
             </select>
-
-            <span>Desarrollo:&nbsp;</span> 
-              <select id="devSelect">
-                <option value="null">---</option>
-                <option value="developed" >Desarrollado</option>
-                <option value="!developed">En desarrollo</option>
-              </select>
-
-              <span>Lugares:&nbsp;</span> 
-              <select id="rankingSelect">
-                <option value="null">---</option>
-                <option value="1" >1-4</option>
-                <option value="2">5-10</option>
-                <option value="3">10...</option>
-              </select>
             
             <span>Continente:&nbsp;</span> 
               <select id="continentSelect">
@@ -186,9 +171,8 @@
       
       let activeCountries = [];
       info.update = function () {
-        
-        const contents =` <b>Escoja un criterio de filtrado</b>
-         <br/>Existen ${activeCountries.length} países que satisfacen su filtrado. </sup>`;
+       
+        const contents = `Existen ${activeCountries.length} países que satisfacen su filtrado.`;
         this._div.innerHTML = `<h4>Información sobre el filtrado </h4>${contents}`;
       }
 
@@ -205,7 +189,6 @@
       let trainer_sexList= allCountries;
       let developmentList= allCountries;
       let continentsList= allCountries;
-      let rankingList = allCountries;
       let mergedList = allCountries;
 
 
@@ -214,7 +197,6 @@
       const filterDev = document.getElementById("devSelect");
       const filterSport = document.getElementById("sportSelect");
       const filterCategory = document.getElementById("categorySelect");
-      const filterRanking = document.getElementById("rankingSelect");
 
 
       // get color depending on majority of data
@@ -273,7 +255,7 @@
       async function zoomToFeature(e) {
         var layer = e.target;
         map.fitBounds(layer.getBounds());
-        var popupContent = "Nombre del país: " + layer.feature.properties.name;
+        var popupContent = layer.feature.properties.name;
         layer.bindPopup(popupContent).openPopup();
       }
 
@@ -466,9 +448,6 @@
         const filterContinent4 = getCountriesFromContinent(data, "Europa");
         const filterContinent5 = getCountriesFromContinent(data, "Australia y Oceanía");
 
-        const filterRanking1_4 =    getCountriesByRank(data, 1);
-        const filterRanking5_10 =   getCountriesByRank(data, 2);
-        const filterRanking10Plus = getCountriesByRank(data, 3);
 
         filterCategory.addEventListener("change", function () {
           const selectedValue = filterCategory.value;
@@ -574,25 +553,13 @@
 
         });
 
-        filterRanking.addEventListener("change", function() {
-          const selectedValue = filterRanking.value;
-
-          if (selectedValue === "null") {
-            rankingList = allCountries;
-          } else if (selectedValue === "1") {
-            rankingList = filterRanking1_4;
-          } else if (selectedValue === "2") {
-            rankingList = filterRanking5_10;
-          } else if (selectedValue === "3") {
-            rankingList = filterRanking10Plus;
-          }
-        });
 
       });
       
       function parche() {
         return new Promise((resolve, reject) => {
-          if (filterGender.value !== "null" && filterCategory.value !== "null" && filterSport.value !== "null" && filterSport.value !== "all") {
+          if (filterGender.value !== "null" && filterCategory.value !== "null" && filterSport.value !== "null" && filterSport.value !== "all")
+          {
             $.getJSON('../data/data.json', function(data) {
               let filterN = [];
               for (var sportId in data.sports) {
@@ -653,9 +620,7 @@
           team_sexList.includes(value) &&
           trainer_sexList.includes(value) &&
           continentsList.includes(value) &&
-          rankingList.includes(value) &&
           mergedList.includes(value)
-          // developmentList.includes(value) &&
           );
           activeCountries = intersection;
           updateMap();
